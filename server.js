@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cors = require('cors');
+const PORT = 8080
 
 
 app.use(cors())
@@ -44,7 +45,7 @@ res.send("Sorry, no end-point detected!")})
 
 function selfServer() {
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log('App is listening on port 8080')
 })
 }
