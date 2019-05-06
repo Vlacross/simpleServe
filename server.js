@@ -8,6 +8,7 @@ const PORT = 8080
 
 app.use(cors())
 app.use(jsonParser)
+app.use(express.static(path.join(_dirname, 'simpleServer')))
 
 
 
@@ -46,7 +47,7 @@ res.send("Sorry, no end-point detected!")})
 function selfServer() {
 
 app.listen(PORT, () => {
-  console.log('App is listening on port 8080')
+  console.log(`App is listening on port ${ PORT }`)
 })
 }
 
