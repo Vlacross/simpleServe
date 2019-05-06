@@ -8,7 +8,6 @@ const PORT = 8080
 
 app.use(cors())
 app.use(jsonParser)
-app.use(express.static(path.join(_dirname, 'simpleServer')))
 
 
 
