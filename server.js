@@ -42,5 +42,11 @@ app.post('/merch-side-product', jsonParser, (req, res) => {
 app.all('/*', (req, res) => {
 res.send("Sorry, no end-point detected!")})
 
+function selfServer() {
 
-app.listen(8080)
+app.listen(8080, () => {
+  console.log('App is listening on port 8080')
+})
+}
+
+(require.main === module) ? selfServer() : console.log('starting server')
