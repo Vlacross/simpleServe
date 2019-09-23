@@ -1,22 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { fieldCheck } = require('./middleware');
-
-const { mailer, email } = require('./transport');
-
+const { sgMail, email } = require('./transport');
+const { CORS } = require ('./config');
 
 router
 .get('/', (req, res) => {
   console.log('checkpointed in GET!')
   res.json('Oh, hello there..')
 })
-
-.post('/', fieldCheck, (req, res) => {
- let emailObject = new email;
- console.log(emailObject)
-
-})
-
 
 .post('/checkers', fieldCheck, (req, res) => {
   console.log('made it passed ed?')
@@ -27,11 +19,10 @@ router
   });
 
   return new Promise ((resolve, reject) => {
-    mailer.sendMail(emailObject, function(err, response) {
+    sgMail.send(emailObject, function(err, response) {
       if(err) {
   
         console.log(err)
-  
         return reject(err)
       }
       else {

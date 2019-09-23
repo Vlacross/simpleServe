@@ -1,25 +1,17 @@
-const nodemailer = require('nodemailer');
-const sgTransport = require('nodemailer-sendgrid-transport');
+const sgMail = require('@sendgrid/mail');
 
 const { API_KEY, DESTINATION, SOURCE } = require('./config');
 
-const options = {
-  auth: {
-    api_key: API_KEY
-  }
-};
-
-const mailer = nodemailer.createTransport(sgTransport(options));
+sgMail.setApiKey(API_KEY);
 
 const email = {
   to: [DESTINATION],
   from: SOURCE,
   subject: '',
-  text: '',
-  html: ''
+  text: ''
 };
 
 module.exports = {
-  mailer,
+  sgMail,
   email
 }

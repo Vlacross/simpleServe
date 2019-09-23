@@ -1,10 +1,8 @@
 const { emailCheck } = require('./utils');
 
 const fieldCheck = (req, res, next) => {
-  console.log('fieldCheck start')
 
   let missingFields;
-  console.log(req.body)
   const requiredFields = ['from', 'to', 'subject', 'text', 'html'];
   missingFields = requiredFields.filter(field => !req.body[field]);
   if(missingFields.length > 0) {
