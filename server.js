@@ -3,11 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const cors = require('cors');
-const PORT = process.env.PORT || 8080
+const mailerRoutes = require('./mailer');
+const PORT = process.env.PORT || 8080;
 
 
-app.use(cors())
-app.use(jsonParser)
+app.use(cors());
+app.use(jsonParser);
+app.use('/mailer', mailerRoutes);
 
 
 
