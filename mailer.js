@@ -33,13 +33,13 @@ router
     })
   })
   .then(response => {
-    if(response.message === 'success') {
+    if(response[0].statusCode === 202) {
       console.log('success!')
-     return res.json(response)
+     return res.json({ message: 'Success!' })
     }
     else {
-      console.log('Not Quite success!')
-      return res.json(response)
+      console.log('Not returning proper status code.')
+      return res.json({ message: 'Undetermined outcome!' })
     }
   })
   .catch(err => {
