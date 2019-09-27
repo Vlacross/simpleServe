@@ -10,7 +10,7 @@ router
   res.json('Oh, hello there..')
 })
 
-.post('/checkers', fieldCheck, (req, res) => {
+.post('/checkers', CORS, fieldCheck, (req, res) => {
   console.log('made it passed ed?')
 
   let emailObject = Object.assign({}, email, {

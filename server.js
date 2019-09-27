@@ -7,6 +7,7 @@ const mailerRoutes = require('./mailer');
 const PORT = process.env.PORT || 8080;
 
 
+app.use(cors());
 app.use(jsonParser);
 app.use('/mailer', mailerRoutes);
 
