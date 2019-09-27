@@ -37,7 +37,10 @@ router
       console.log('success!')
      return res.json(response)
     }
-    else console.log(response)
+    else {
+      console.log(response)
+      return res.json(response)
+    }
   })
   .catch(err => {
     res.json({
