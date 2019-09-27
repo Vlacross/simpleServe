@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { fieldCheck } = require('./middleware');
 const { sgMail, email } = require('./transport');
-const { CORS } = require ('./config');
 
 router
 .get('/', (req, res) => {
@@ -10,7 +9,7 @@ router
   res.json('Oh, hello there..')
 })
 
-.post('/checkers', CORS, fieldCheck, (req, res) => {
+.post('/checkers', fieldCheck, (req, res) => {
   console.log('made it passed ed?')
 
   let emailObject = Object.assign({}, email, {
