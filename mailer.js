@@ -15,7 +15,9 @@ router
 
   let emailObject = Object.assign({}, email, {
     subject: req.body.subject,
-    text: req.body.text
+    text: `From: ${req.body.name}
+           Email: ${req.body.returnAddr}
+           Message:${req.body.text}`
   });
 
   return new Promise ((resolve, reject) => {

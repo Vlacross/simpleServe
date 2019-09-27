@@ -3,7 +3,8 @@ require('dotenv').config();
 const cors = require('cors');
 
 const corsOpts = {
-  origin: process.env.CLIENT_ORIGIN
+  origin: process.env.CLIENT_ORIGIN,
+  methods: 'POST'
 }
 
 module.exports = {
