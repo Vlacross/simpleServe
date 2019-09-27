@@ -38,7 +38,9 @@ router
      return res.json(response)
     }
     else {
-      console.log(response)
+      console.log(typeof response)
+      console.log(response[0])
+      console.log(response.statusCode)
       return res.json(response)
     }
   })
