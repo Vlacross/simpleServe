@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const cors = require('cors');
 const mailerRoutes = require('./mailer');
-const PORT = process.env.PORT || 8080;
+const  { CLIENT_ORIGIN, PORT } = require('./config');
+const cors = require('cors');
+const corsOpts = {
+  origin: CLIENT_ORIGIN
+}
 
-
-app.use(cors());
+app.use(cors(corsOpts));
 app.use(jsonParser);
 app.use('/mailer', mailerRoutes);
 
