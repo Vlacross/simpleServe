@@ -11,7 +11,6 @@ router
 // })
 .post('/', wakeCheck, (req, res) => {
   let sites = SITE_LIST.split(' ');
-  console.log(sites)
   sites.forEach(site => alarm_clock(site));
   res.json({message: 'snooze'}).status(200)
 })
