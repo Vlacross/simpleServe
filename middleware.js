@@ -1,4 +1,5 @@
 const { emailCheck } = require('./utils');
+const { WAKE_WORDS } = require('./config');
 
 const fieldCheck = (req, res, next) => {
 
@@ -22,6 +23,26 @@ const fieldCheck = (req, res, next) => {
   }
 }
 
+const wakeCheck = (req, res, next) => {
+
+  if(!req.body.alarmKey) {
+    return res.json({
+      type: 'error',
+      code: 401,
+      message: 'Improper payload format.'
+    })
+  } else if (req.body.alarmKey != WAKE_WORDS) {
+    return res.json({
+      type: 'error',
+      code: 401,
+      message: 'Incorrect Key'
+    })
+  } else {
+    next(null, req.body);
+  }
+}
+
 module.exports = {
-  fieldCheck
+  fieldCheck,
+  wakeCheck
 }
