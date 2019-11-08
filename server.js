@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const mailerRoutes = require('./mailer');
+const wakeUpRoutes = require('./wakeUp');
 const  { CLIENT_ORIGIN, PORT } = require('./config');
 const cors = require('cors');
 const corsOpts = {
@@ -12,6 +13,7 @@ const corsOpts = {
 app.use(cors(corsOpts));
 app.use(jsonParser);
 app.use('/mailer', mailerRoutes);
+app.use('/wake-up', wakeUpRoutes);
 
 
 
