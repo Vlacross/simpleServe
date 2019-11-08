@@ -25,13 +25,13 @@ const fieldCheck = (req, res, next) => {
 
 const wakeCheck = (req, res, next) => {
 
-  if(!req.body.alarmKey) {
+  if(!req.body.alarmkey) {
     return res.json({
       type: 'error',
       code: 401,
       message: 'Improper payload format.'
     })
-  } else if (req.body.alarmKey != WAKE_WORDS) {
+  } else if (req.body.alarmkey != WAKE_WORDS) {
     return res.json({
       type: 'error',
       code: 401,
