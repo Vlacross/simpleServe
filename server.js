@@ -1,4 +1,5 @@
 const express = require('express');
+const subdomain = require('express-subdomain');
 const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
@@ -14,12 +15,18 @@ app.use(cors(corsOpts));
 app.use(jsonParser);
 app.use('/mailer', mailerRoutes);
 app.use('/wake-up', wakeUpRoutes);
-
+app.use(subdomain('staging.veeloapp', app));
 
 
 app.get('/', (req, res) => {
   console.log('simple get success')
   res.send("Thanks for waking me up...")
+})
+
+app.get('/checkers', (req, res) => {
+  console.log(req.headers)
+  console.log(req.body)
+  res.send("Just checking are we?")
 })
 
 app.post('/merch-side-product', jsonParser, (req, res) => {
