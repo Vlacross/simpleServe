@@ -54,7 +54,7 @@ app.post('/merch-side-product', jsonParser, (req, res) => {
 
 
 app.all('/*', (req, res) => {
-res.send("Sorry, no end-point detected!")})
+res.send('Sorry, no end-point detected!')})
 
 function selfServer() {
 
